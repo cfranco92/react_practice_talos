@@ -8,12 +8,12 @@ class PokemonCard extends React.Component {
     }
 
     render () {
-        const clases = styles.card
+        const clases = styles
 
         return (
-            <div className={clases}>
-                <img src={ this.props.image } alt="Pokemon"></img>
-                <h2>{ this.props.name }</h2>
+            <div className={clases.card}>
+                <img src={ this.props.image } alt="Pokemon" className={clases.image}></img>
+                <h2 className={clases.name}>{ this.props.name }</h2>
             </div>
         )
     }
