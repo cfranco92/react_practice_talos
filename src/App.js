@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Charts from './components/ChartTool';
 import PokemonCard from './components/PokemonCard';
 
 class App extends Component {
@@ -38,7 +39,12 @@ class App extends Component {
             />
           </div>
         ))}
+
+        <div>
+          <Charts/>
+        </div>
       </div>
+      
     )
   }
 }

@@ -2,6 +2,13 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+
+This project was created with the following libraries:
+* Charts: 
+    ```https
+        https://www.chartjs.org/
+    ```
+
 ## Available Scripts
 
 In the project directory, you can run:
