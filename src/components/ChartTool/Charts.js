@@ -11,7 +11,8 @@ class Charts extends React.Component {
 
     componentDidMount() {
         const ctx = this.chartRef.current.getContext('2d')
-        const myChart = new Chart(ctx, {
+        // const myChart = new Chart(ctx, {
+        new Chart(ctx, {
             type: 'bar',
             data: {
                 labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
