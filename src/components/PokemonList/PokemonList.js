@@ -1,4 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { connect } from 'react-redux';
+import { fetchPokemons } from '../../redux/actions/pokemonsActions';
 import Charts from '../ChartTool';
 import PokemonCard from '../PokemonCard';
 
@@ -6,24 +8,29 @@ const PokemonList = (props) => {
     let pokemonsList = [
         {
             name: 'Pikachu',
-            image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxe9Q76P0YAKEPuI0HWY9oa8k4pKVHITfvG2FRP0mkTwnpffrKuWVsWsTHyVg&usqp=CAc'
+            image: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png'
         },
         {
             name: 'Bulbasaur',
-            image: 'https://alchetron.com/cdn/bulbasaur-6ff8e197-3cf8-4793-8b3a-6e65f8d899f-resize-750.png'
+            image: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png'
         }
-
     ]
-    const [pokemons] = useState(pokemonsList)
+    const [pokemons2] = useState(pokemonsList)
+
+    useEffect(() => {
+        props.fetchPokemons()
+        console.log(props)
+    }, [])
+    // props.dispatch(fetchPokemons())
 
     return (
         <div>
-            {pokemons.map((pokemon) => (
+            {props.pokemons.map((pokemon, index) => (
                 <div
                     key={pokemon.name}>
                     <PokemonCard
                         name={pokemon.name}
-                        image={pokemon.image}
+                        imageIndex={index}
                     />
                 </div>
             ))}
@@ -35,4 +42,22 @@ const PokemonList = (props) => {
     )
 }
 
-export default PokemonList
+const mapStateToProps = (state) => {
+    // console.log('state', state.pokemons.pokemons)
+    console.log('state', state)
+    return {
+        pokemons: state.pokemons.pokemonsArray
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        fetchPokemons: () => dispatch(fetchPokemons())
+    }
+}
+
+// export default PokemonList
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+) (PokemonList)
