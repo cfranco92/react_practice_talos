@@ -1,0 +1,9 @@
+.navStyles {
+    display: flex;
+    padding: 20px;
+    justify-content: space-around;
+}
+
+.navActive {
+    color: black;
+}
