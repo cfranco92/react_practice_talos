@@ -11,7 +11,6 @@ export const fetchPokemons = () => (dispatch) => {
   fetch('https://pokeapi.co/api/v2/pokemon?offset=0&limit=20')
     .then(res => res.json())
     .then(query => {
-      console.log(query)
       dispatch({
         type: FETCH_POKEMONS_SUCCESS,
         payload: {
