@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useRef } from 'react'
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import { Navbar, Nav, Form, FormControl } from 'react-bootstrap'
@@ -9,10 +9,6 @@ const NavegationBar = ({ navBar, addSearch}) => {
   const clases = styles
 
   const input = useRef()
-
-  useEffect(() => {
-    console.log('redux search: ', navBar)
-  }, [navBar])
 
   const NavActive = {
     color: 'black'
@@ -73,7 +69,6 @@ const NavegationBar = ({ navBar, addSearch}) => {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state)
   return {
     navBar: state.navBar
   }

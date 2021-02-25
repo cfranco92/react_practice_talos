@@ -2,9 +2,9 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux';
 import { fetchPokemons, triggerFetch } from '../../redux/actions/pokemonsActions';
 import { Row } from 'react-bootstrap';
-import Charts from '../ChartTool';
 import PokemonCard from '../PokemonCard';
 import styles from './PokemonList.module.css'
+import ModalView from '../ModalView/ModalView';
 
 const PokemonList = ({ pokemonsQuery, fetchPokemons, navBarState, triggerFetch, queryCounter}) => {
   const clases = styles
@@ -28,7 +28,9 @@ const PokemonList = ({ pokemonsQuery, fetchPokemons, navBarState, triggerFetch, 
               <div key={index + Math.random()}>
                 <PokemonCard
                   name={pokemon.name}
-                  imageIndex={index + 1} />
+                  imageIndex={index + 1}
+                  url ={pokemon.url}  
+                />
               </div>
             )
           } else {
@@ -37,7 +39,7 @@ const PokemonList = ({ pokemonsQuery, fetchPokemons, navBarState, triggerFetch, 
         })}
       </Row>
       <div>
-        <Charts />
+        <ModalView />
       </div>
     </div>
   )

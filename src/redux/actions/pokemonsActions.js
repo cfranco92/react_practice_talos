@@ -6,6 +6,7 @@ export const FETCH_POKEMONS_SUCCESS2 = 'FETCH_POSTS_SUCCESS2'
 export const FETCH_POKEMONS_ERROR = 'FETCH_POSTS_ERROR'
 export const FILTER_POKEMONS = 'FILTER_POKEMONS'
 export const TRIGEER_FETCH = 'TRIGEER_FETCH'
+export const ADD_SELECTED_POKEMON = 'ADD_SELECTED_POKEMON'
 
 
 export const fetchPokemons = (counter) => (dispatch) => {
@@ -42,3 +43,25 @@ export const triggerFetch = (actualConter) => (dispatch) => {
   })
 }
 
+export const addSelectedPokemon = (pokemon, url) => (dispatch) => {
+  
+    fetch(url)
+      .then(res => res.json())
+      .then(query => {
+        dispatch({
+          type: ADD_SELECTED_POKEMON,
+          payload: {
+            pokemons: query,
+            pokemon: pokemon
+          }
+        })
+      })
+      .catch(error => {
+        dispatch({
+          type: ADD_SELECTED_POKEMON,
+          payload: {
+            error: error.toString()
+          }
+        })
+      })
+}
