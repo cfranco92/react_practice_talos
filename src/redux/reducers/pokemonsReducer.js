@@ -1,9 +1,12 @@
-import { FETCH_POKEMONS_REQUEST, FETCH_POKEMONS_SUCCESS, FETCH_POKEMONS_ERROR } from '../actions/pokemonsActions'
+import { FETCH_POKEMONS_REQUEST, FETCH_POKEMONS_SUCCESS, TRIGEER_FETCH, FETCH_POKEMONS_ERROR } from '../actions/pokemonsActions'
 
 const initialState = {
   pokemonsArray: [],
   isFetching: false,
-  error: null
+  error: null,
+  nextQuery: null,
+  previousQuery: null,
+  queryCounter: 0
 }
 
 function pokemons(state = initialState, action) {
@@ -18,8 +21,12 @@ function pokemons(state = initialState, action) {
       return {
         ...state,
         isFetching: false,
-        pokemonsArray: action.payload.pokemons,
-        originalPokemonsArray: action.payload.pokemons
+        previosQuery: action.payload.pokemons.previous,
+        nextQuery: action.payload.pokemons.next,
+        pokemonsArray: [
+          ...state.pokemonsArray,
+          ...action.payload.pokemons.results,
+        ],
       }
 
     case FETCH_POKEMONS_ERROR:
@@ -27,6 +34,12 @@ function pokemons(state = initialState, action) {
         ...state,
         isFetching: false,
         error: action.payload.error
+      }
+    
+      case TRIGEER_FETCH:
+        return {
+          ...state,
+          queryCounter: action.payload.counter
       }
 
     default:

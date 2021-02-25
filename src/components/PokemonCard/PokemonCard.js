@@ -9,10 +9,14 @@ const PokemonCard = (props) => {
 
   const clases = styles
 
+  const handleInput = (name) => (e) => {
+    alert(`${name} seleccionado`)
+  }
+
   return (
     <div className={clases.component}>
       <Col>
-        <Card className={clases.card}>
+        <Card className={clases.card} onClick={handleInput(name)}>
           <Image variant="top" src={`${imageURL}${imageIndex}.png`} className={clases.image} fluid />
           <Card.Footer className={clases.footer}>
             <small className="text-muted">{name}</small>
