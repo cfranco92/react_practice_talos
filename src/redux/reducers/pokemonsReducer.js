@@ -6,7 +6,7 @@ const initialState = {
   error: null
 }
 
-function pokemons (state = initialState, action) {
+function pokemons(state = initialState, action) {
   switch (action.type) {
     case FETCH_POKEMONS_REQUEST:
       return {
@@ -18,7 +18,8 @@ function pokemons (state = initialState, action) {
       return {
         ...state,
         isFetching: false,
-        pokemonsArray: action.payload.pokemons
+        pokemonsArray: action.payload.pokemons,
+        originalPokemonsArray: action.payload.pokemons
       }
 
     case FETCH_POKEMONS_ERROR:

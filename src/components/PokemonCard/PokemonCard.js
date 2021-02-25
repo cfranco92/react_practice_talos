@@ -13,7 +13,7 @@ const PokemonCard = (props) => {
     <div className={clases.component}>
       <Col>
         <Card className={clases.card}>
-          <Image variant="top" src={`${imageURL}${imageIndex + 1}.png`} className={clases.image} fluid />
+          <Image variant="top" src={`${imageURL}${imageIndex}.png`} className={clases.image} fluid />
           <Card.Footer className={clases.footer}>
             <small className="text-muted">{name}</small>
           </Card.Footer>

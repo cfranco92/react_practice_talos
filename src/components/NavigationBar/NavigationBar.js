@@ -1,13 +1,26 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
+import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
-import { Navbar, Nav, Form, FormControl} from 'react-bootstrap'
+import { Navbar, Nav, Form, FormControl } from 'react-bootstrap'
 import styles from './NavigationBar.module.css'
+import { addSearch } from '../../redux/actions/navBarActions'
 
-const NavegationBar = () => {
+const NavegationBar = ({ navBar, addSearch}) => {
   const clases = styles
+
+  const input = useRef()
+
+  useEffect(() => {
+    console.log('redux search: ', navBar)
+  }, [navBar])
 
   const NavActive = {
     color: 'black'
+  }
+
+  const handleInput = (e) => {
+    addSearch(e.target.value)
+    console.log(input)
   }
 
   return (
@@ -24,30 +37,34 @@ const NavegationBar = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link>
-              <NavLink
-                to='/'
-                exact
-                activeClassName={clases.navActive}
-                activeStyle={NavActive}
-                className={clases.linkColor}
-              >
-                Pokemons
-              </NavLink>
+            <Nav.Link
+              as={NavLink}
+              to='/'
+              exact
+              activeClassName={clases.navActive}
+              activeStyle={NavActive}
+              className={clases.linkColor}
+            >
+              Pokemons
             </Nav.Link>
-            <Nav.Link>
-              <NavLink
-                to='/items'
-                activeClassName={clases.navActive}
-                activeStyle={NavActive}
-                className={clases.linkColor}
-              >
-                Items
-              </NavLink>
+            <Nav.Link
+              as={NavLink}
+              to='/items'
+              activeClassName={clases.navActive}
+              activeStyle={NavActive}
+              className={clases.linkColor}
+            >
+              Items
             </Nav.Link>
           </Nav>
           <Form inline>
-            <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+            <FormControl
+              type="text"
+              placeholder="Search"
+              onChange={handleInput}
+              ref={input}
+              className="mr-sm-2"
+            />
           </Form>
         </Navbar.Collapse>
       </Navbar>
@@ -55,4 +72,20 @@ const NavegationBar = () => {
   )
 }
 
-export default NavegationBar
+const mapStateToProps = (state) => {
+  console.log(state)
+  return {
+    navBar: state.navBar
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addSearch: (search) => dispatch(addSearch(search)),
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(NavegationBar)

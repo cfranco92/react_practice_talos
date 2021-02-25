@@ -9,7 +9,7 @@ const composeEnhancers = composeWithDevTools({
     realtime: true,
     trace: true,
     traceLimit: 20
-  })
+})
 
 const store = createStore(
     rootReducer,

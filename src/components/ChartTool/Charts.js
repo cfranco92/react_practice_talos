@@ -4,7 +4,7 @@ import Chart from 'chart.js'
 
 class Charts extends React.Component {
     state = {
-        
+
     }
 
     chartRef = React.createRef()
@@ -47,10 +47,10 @@ class Charts extends React.Component {
                     }]
                 }
             }
-          })
+        })
     }
 
-    render () {
+    render() {
         const clases = styles
 
         return (

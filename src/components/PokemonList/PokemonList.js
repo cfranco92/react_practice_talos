@@ -5,22 +5,29 @@ import { Row } from 'react-bootstrap';
 import Charts from '../ChartTool';
 import PokemonCard from '../PokemonCard';
 
-const PokemonList = ({ pokemons, fetchPokemons }) => {
+const PokemonList = ({ pokemonsQuery, fetchPokemons, navBarState }) => {
+
   useEffect(() => {
     fetchPokemons()
   }, [fetchPokemons])
 
   return (
     <div>
+      <p>{navBarState.search}</p>
       <Row>
-        {pokemons.map((pokemon, index) => (
-          <div key={pokemon.name}>
-            <PokemonCard
-              name={pokemon.name}
-              imageIndex={index}
-            />
-          </div>
-        ))}
+        {pokemonsQuery.map((pokemon, index) => {
+          if (pokemon.name.toLowerCase().includes(navBarState.search)) {
+            return (
+              <div key={pokemon.name}>
+                <PokemonCard
+                  name={pokemon.name}
+                  imageIndex={index + 1} />
+              </div>
+            )
+          } else {
+            return ''
+          }
+        })}
       </Row>
       <div>
         <Charts />
@@ -31,7 +38,8 @@ const PokemonList = ({ pokemons, fetchPokemons }) => {
 
 const mapStateToProps = (state) => {
   return {
-    pokemons: state.pokemons.pokemonsArray
+    pokemonsQuery: state.pokemons.pokemonsArray,
+    navBarState: state.navBar
   }
 }
 
