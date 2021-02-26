@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import styles from './ModalView.module.css'
-import { Modal, Image, Row, Col, Table } from 'react-bootstrap';
+import { Modal, Image, Row, Col, Table, Button } from 'react-bootstrap';
 import ChartTool from '../ChartTool'
 import { setShow } from '../../redux/actions/modalViewActions'
 
@@ -15,8 +15,10 @@ const ModalView = ({ setShow, modalViewState, selectedPokemons }) => {
 
   return (
     <>
+      {/* <Button onClick={handleClick}>Large modal</Button> */}
       <Modal
-        size="lg"
+        // className={styles.modal}
+        size="m"
         show={modalViewState}
         onHide={handleClick}
         aria-labelledby="example-modal-sizes-title-lg"
@@ -27,6 +29,7 @@ const ModalView = ({ setShow, modalViewState, selectedPokemons }) => {
               return (
                 <div key={index + Math.random()}>
                   {String(pokemon.name).toUpperCase()}
+                   <Button className={clases.modalButton} onClick={handleClick} variant="secondary">Compare to...</Button> 
                 </div>
               )
             })}

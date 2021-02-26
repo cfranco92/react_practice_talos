@@ -1,4 +1,6 @@
-.image {}
+.image {
+    width: 100%;
+}
 
 .name {
     text-align: center;
@@ -8,4 +10,8 @@
 
 .subtitle {
     font-size: 1.25rem;
+}
+
+.modalButton {
+    margin-left: 10px;
 }
