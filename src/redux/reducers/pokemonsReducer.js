@@ -43,12 +43,24 @@ function pokemons(state = initialState, action) {
         queryCounter: action.payload.counter
       }
 
+    // case ADD_SELECTED_POKEMON:
+    // return {
+    //   ...state,
+    //   selectedPokemons : [
+    //     ...state.selectedPokemons,
+    //     {...action.payload.pokemons,...action.payload.pokemon},
+    //   ]
+    // }
+    
     case ADD_SELECTED_POKEMON:
     return {
       ...state,
       selectedPokemons : [
         ...state.selectedPokemons,
-        {...action.payload.pokemons,...action.payload.pokemon},
+        { ...action.payload.pokemons,
+          ...action.payload.pokemon,
+          ...action.payload.pokemonDescription
+        },
       ]
     }
 

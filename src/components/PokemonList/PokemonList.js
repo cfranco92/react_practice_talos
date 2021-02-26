@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux';
 import { fetchPokemons, triggerFetch } from '../../redux/actions/pokemonsActions';
-import { Row } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import PokemonCard from '../PokemonCard';
 import styles from './PokemonList.module.css'
 import ModalView from '../ModalView/ModalView';
@@ -26,11 +26,13 @@ const PokemonList = ({ pokemonsQuery, fetchPokemons, navBarState, triggerFetch, 
           if (pokemon.name.toLowerCase().includes(navBarState.search.toLowerCase())) {
             return (
               <div key={index + Math.random()}>
+                <Col >
                 <PokemonCard
                   name={pokemon.name}
                   imageIndex={index + 1}
                   url ={pokemon.url}  
                 />
+                </Col>
               </div>
             )
           } else {

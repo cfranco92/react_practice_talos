@@ -45,7 +45,7 @@ const ModalView = ({ setShow, modalViewState, selectedPokemons }) => {
                       <Image variant="top" src={`${pokemon.image}`} className={clases.image} fluid />
                     </Col>
                     <Col xs={8} md={8}>
-                      Description going to be here
+                      {pokemon.flavor_text_entries[1].flavor_text}
                       <hr />
                       <Table borderless size='sm'>
                         <thead>
@@ -109,15 +109,11 @@ const ModalView = ({ setShow, modalViewState, selectedPokemons }) => {
                     stats={pokemon.stats.map((stat) => { 
                       return stat.stat.name
                     })}
-                    // stats={pokemon.stats.map((stat) => { 
-                    //   return {
-                    //     name: stat.stat.name,
-                    //     base: stat.base_stat  
-                    //   }
-                    // })}
                     bases={pokemon.stats.map((stat) => { 
                       return stat.base_stat  
                     })}
+                    name={pokemon.name}
+                    color={pokemon.color.name}
                   />
                 </div>
 

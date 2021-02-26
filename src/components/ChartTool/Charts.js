@@ -3,11 +3,13 @@ import styles from './Charts.module.css'
 import Chart from 'chart.js'
 
 
-const Charts = ({ stats, bases }) => {
+const Charts = ({ stats, bases, name, color }) => {
     const [statsName] = useState(stats)
     const [basesData] = useState(bases)
+    const [pokemonName] = useState(name)
+    const [pokemonColor] = useState(color)
+    
     const chartRef = useRef()
-
     const clases = styles
 
     useEffect(() => {
@@ -20,36 +22,24 @@ const Charts = ({ stats, bases }) => {
                 labels: statsName,
                 datasets: [
                     {
-                        label: 'Pokemon 1',
+                        label: String(pokemonName).toUpperCase(),
                         // data: [2, 10, 12, 6, 2, 3],
                         data: basesData,
                         backgroundColor: [
-                            // 'rgba(255, 99, 132, 0.2)',
-                            // 'rgba(54, 162, 235, 0.2)',
-                            // 'rgba(255, 206, 86, 0.2)',
-                            'rgb(68,92,36)',
-                            // 'rgba(75, 192, 192, 0.2)',
-                            'rgb(68,92,36)',
-                            'rgb(68,92,36)',
-                            'rgb(68,92,36)',
-                            'rgb(68,92,36)',
-                            'rgb(68,92,36)',
-                            // 'rgba(153, 102, 255, 0.2)',
-                            // 'rgba(255, 159, 64, 0.2)'
+                            pokemonColor, 
+                            pokemonColor, 
+                            pokemonColor, 
+                            pokemonColor, 
+                            pokemonColor, 
+                            pokemonColor, 
                         ],
                         borderColor: [
-                            // 'rgba(255, 99, 132, 1)',
-                            // 'rgba(54, 162, 235, 1)',
-                            // 'rgba(255, 206, 86, 1)',
-                            // 'rgba(75, 192, 192, 1)',
-                            'rgb(68,92,36)',
-                            'rgb(68,92,36)',
-                            'rgb(68,92,36)',
-                            'rgb(68,92,36)',
-                            'rgb(68,92,36)',
-                            'rgb(68,92,36)',
-                            // 'rgba(153, 102, 255, 1)',
-                            // 'rgba(255, 159, 64, 1)'
+                            pokemonColor, 
+                            pokemonColor, 
+                            pokemonColor, 
+                            pokemonColor, 
+                            pokemonColor, 
+                            pokemonColor, 
                         ],
                         borderWidth: 1
                     },
