@@ -8,7 +8,6 @@ import Toast from '../ToastComponent/ToastComponent'
 
 const NavegationBar = ({ navBar, addSearch}) => {
   const clases = styles
-
   const input = useRef()
 
   const NavActive = {
@@ -24,12 +23,14 @@ const NavegationBar = ({ navBar, addSearch}) => {
     <nav className={clases.navBar}>
       <Navbar bg="light" expand="lg">
         <Navbar.Brand>
-          {/* <NavLink
-            to='/'
-            exact
-          > */}
+          <NavLink
+            to='/home'
+            activeClassName={clases.navActive}
+            activeStyle={NavActive}
+            className={clases.linkColor}
+          >
             PokéApp
-          {/* </NavLink> */}
+          </NavLink>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">

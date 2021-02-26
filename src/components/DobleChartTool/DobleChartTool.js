@@ -1,12 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react'
-import styles from './Charts.module.css'
+import styles from './DobleChartTool.module.css'
 import Chart from 'chart.js'
 
-const Charts = ({ stats, bases, name, color }) => {
+const DobleChartTool = ({ stats, bases, name, color, stats2, bases2, name2, color2 }) => {
   const [statsName] = useState(stats)
   const [basesData] = useState(bases)
   const [pokemonName] = useState(name)
   const [pokemonColor] = useState(color)
+  const [basesData2] = useState(bases2)
+  const [pokemonName2] = useState(name2)
+  const [pokemonColor2] = useState(color2)
 
   const chartRef = useRef()
   const clases = styles
@@ -39,6 +42,27 @@ const Charts = ({ stats, bases, name, color }) => {
             ],
             borderWidth: 1
           },
+          {
+            label: String(pokemonName2).toUpperCase(),
+            data: basesData2,
+            backgroundColor: [
+              pokemonColor2,
+              pokemonColor2,
+              pokemonColor2,
+              pokemonColor2,
+              pokemonColor2,
+              pokemonColor2,
+            ],
+            borderColor: [
+              pokemonColor2,
+              pokemonColor2,
+              pokemonColor2,
+              pokemonColor2,
+              pokemonColor2,
+              pokemonColor2,
+            ],
+            borderWidth: 1
+          }
         ]
       },
       options: {
@@ -65,4 +89,4 @@ const Charts = ({ stats, bases, name, color }) => {
 
 }
 
-export default Charts
+export default DobleChartTool
