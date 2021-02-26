@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom'
 import { Navbar, Nav, Form, FormControl } from 'react-bootstrap'
 import styles from './NavigationBar.module.css'
 import { addSearch } from '../../redux/actions/navBarActions'
+import Toast from '../ToastComponent/ToastComponent'
 
 const NavegationBar = ({ navBar, addSearch}) => {
   const clases = styles
@@ -20,7 +21,7 @@ const NavegationBar = ({ navBar, addSearch}) => {
   }
 
   return (
-    <nav>
+    <nav className={clases.navBar}>
       <Navbar bg="light" expand="lg">
         <Navbar.Brand>
           {/* <NavLink
@@ -64,6 +65,7 @@ const NavegationBar = ({ navBar, addSearch}) => {
           </Form>
         </Navbar.Collapse>
       </Navbar>
+      <Toast />
     </nav>
   )
 }

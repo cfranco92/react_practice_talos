@@ -3,13 +3,19 @@ import { connect } from 'react-redux'
 import styles from './ModalView.module.css'
 import { Modal, Image, Row, Col, Table, Button } from 'react-bootstrap';
 import ChartTool from '../ChartTool'
-import { setShow } from '../../redux/actions/modalViewActions'
+import { setShow} from '../../redux/actions/modalViewActions'
+import { cleanSelectedPokemons } from '../../redux/actions/pokemonsActions'
 
-const ModalView = ({ setShow, modalViewState, selectedPokemons }) => {
+const ModalView = ({ setShow, modalViewState, selectedPokemons, cleanSelectedPokemons }) => {
   const clases = styles
 
 
   const handleClick = (e) => {
+    setShow(modalViewState)
+    cleanSelectedPokemons()
+  }
+  
+  const handleCompareClick = (e) => {
     setShow(modalViewState)
   }
 
@@ -29,7 +35,7 @@ const ModalView = ({ setShow, modalViewState, selectedPokemons }) => {
               return (
                 <div key={index + Math.random()}>
                   {String(pokemon.name).toUpperCase()}
-                   <Button className={clases.modalButton} onClick={handleClick} variant="secondary">Compare to...</Button> 
+                   <Button className={clases.modalButton} onClick={handleCompareClick} variant="secondary">Compare to...</Button> 
                 </div>
               )
             })}
@@ -136,6 +142,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     setShow: (oldState) => dispatch(setShow(oldState)),
+    cleanSelectedPokemons: () => dispatch(cleanSelectedPokemons())
   }
 }
 

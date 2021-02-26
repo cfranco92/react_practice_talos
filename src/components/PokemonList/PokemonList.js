@@ -5,6 +5,7 @@ import { Row, Col } from 'react-bootstrap';
 import PokemonCard from '../PokemonCard';
 import styles from './PokemonList.module.css'
 import ModalView from '../ModalView/ModalView';
+import Toast from '../ToastComponent/ToastComponent'
 
 const PokemonList = ({ pokemonsQuery, fetchPokemons, navBarState, triggerFetch, queryCounter}) => {
   const clases = styles
@@ -22,6 +23,7 @@ const PokemonList = ({ pokemonsQuery, fetchPokemons, navBarState, triggerFetch, 
   return (
     <div>
       <Row className={clases.row}>
+      
         {pokemonsQuery.map((pokemon, index) => {
           if (pokemon.name.toLowerCase().includes(navBarState.search.toLowerCase())) {
             return (

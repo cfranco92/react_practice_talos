@@ -1,4 +1,11 @@
-import { FETCH_POKEMONS_REQUEST, FETCH_POKEMONS_SUCCESS, TRIGEER_FETCH, FETCH_POKEMONS_ERROR, ADD_SELECTED_POKEMON } from '../actions/pokemonsActions'
+import {
+  FETCH_POKEMONS_REQUEST,
+  FETCH_POKEMONS_SUCCESS,
+  TRIGEER_FETCH,
+  FETCH_POKEMONS_ERROR,
+  ADD_SELECTED_POKEMON,
+  CLEAN_SELECTED_POKEMON
+} from '../actions/pokemonsActions'
 
 const initialState = {
   pokemonsArray: [],
@@ -43,26 +50,26 @@ function pokemons(state = initialState, action) {
         queryCounter: action.payload.counter
       }
 
-    // case ADD_SELECTED_POKEMON:
-    // return {
-    //   ...state,
-    //   selectedPokemons : [
-    //     ...state.selectedPokemons,
-    //     {...action.payload.pokemons,...action.payload.pokemon},
-    //   ]
-    // }
-    
     case ADD_SELECTED_POKEMON:
-    return {
-      ...state,
-      selectedPokemons : [
-        ...state.selectedPokemons,
-        { ...action.payload.pokemons,
-          ...action.payload.pokemon,
-          ...action.payload.pokemonDescription
-        },
-      ]
-    }
+      return {
+        ...state,
+        selectedPokemons: [
+          ...state.selectedPokemons,
+          {
+            ...action.payload.pokemons,
+            ...action.payload.pokemon,
+            ...action.payload.pokemonDescription
+          },
+        ]
+      }
+
+    case CLEAN_SELECTED_POKEMON:
+      return {
+        ...state,
+        selectedPokemons: [
+          ...action.payload.pokemons
+        ]
+      }
 
     default:
       return state

@@ -7,6 +7,7 @@ export const FETCH_POKEMONS_ERROR = 'FETCH_POSTS_ERROR'
 export const FILTER_POKEMONS = 'FILTER_POKEMONS'
 export const TRIGEER_FETCH = 'TRIGEER_FETCH'
 export const ADD_SELECTED_POKEMON = 'ADD_SELECTED_POKEMON'
+export const CLEAN_SELECTED_POKEMON = 'CLEAN_SELECTED_POKEMON'
 
 
 export const fetchPokemons = (counter) => (dispatch) => {
@@ -43,36 +44,12 @@ export const triggerFetch = (actualConter) => (dispatch) => {
   })
 }
 
-export const addSelectedPokemon2 = (pokemon, url) => (dispatch) => {
-  
-    fetch(url)
-      .then(res => res.json())
-      .then(query => {
-        dispatch({
-          type: ADD_SELECTED_POKEMON,
-          payload: {
-            pokemons: query,
-            pokemon: pokemon
-          }
-        })
-      })
-      .catch(error => {
-        dispatch({
-          type: ADD_SELECTED_POKEMON,
-          payload: {
-            error: error.toString()
-          }
-        })
-      })
-}
-
 export const addSelectedPokemon = (pokemon, url, url2) => (dispatch) => {
   console.log('url2',url2)
   Promise.all([
     fetch(url).then(res => res.json()),
     fetch(url2).then(res2 => res2.json())
   ]).then(([res, res2]) => {
-    console.log('thisfgdsfgdfgsdfgsdfgsdfgdsfgds is res', res2)
     dispatch({
       type: ADD_SELECTED_POKEMON,
       payload: {
@@ -83,10 +60,19 @@ export const addSelectedPokemon = (pokemon, url, url2) => (dispatch) => {
     })
   }).catch(error => {
     dispatch({
-      type: ADD_SELECTED_POKEMON,
+      type: FETCH_POKEMONS_ERROR,
       payload: {
         error: error.toString()
       }
     })
+  })
+}
+
+export const cleanSelectedPokemons = () => (dispatch) => {
+  dispatch({
+    type: CLEAN_SELECTED_POKEMON,
+    payload: {
+      pokemons: []
+    }
   })
 }
