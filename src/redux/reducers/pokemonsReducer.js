@@ -48,9 +48,7 @@ function pokemons(state = initialState, action) {
       ...state,
       selectedPokemons : [
         ...state.selectedPokemons,
-        {...action.payload.pokemons},
-        {...action.payload.pokemon},
-
+        {...action.payload.pokemons,...action.payload.pokemon},
       ]
     }
 
