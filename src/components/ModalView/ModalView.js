@@ -3,20 +3,33 @@ import { connect } from 'react-redux'
 import styles from './ModalView.module.css'
 import { Modal, Image, Row, Col, Table, Button } from 'react-bootstrap';
 import ChartTool from '../ChartTool'
-import { setShow} from '../../redux/actions/modalViewActions'
+import { setShow } from '../../redux/actions/modalViewActions'
 import { cleanSelectedPokemons } from '../../redux/actions/pokemonsActions'
+import { setShowToast } from '../../redux/actions/pokemonsActions'
 
-const ModalView = ({ setShow, modalViewState, selectedPokemons, cleanSelectedPokemons }) => {
+const ModalView = (
+  { 
+    setShow, 
+    modalViewState, 
+    selectedPokemons, 
+    cleanSelectedPokemons, 
+    setShowToast,
+    showToast
+  }) => {
   const clases = styles
 
 
   const handleClick = (e) => {
     setShow(modalViewState)
     cleanSelectedPokemons()
+    if (showToast) {
+      setShowToast()
+    }
   }
-  
+
   const handleCompareClick = (e) => {
     setShow(modalViewState)
+    setShowToast()
   }
 
   return (
@@ -35,7 +48,7 @@ const ModalView = ({ setShow, modalViewState, selectedPokemons, cleanSelectedPok
               return (
                 <div key={index + Math.random()}>
                   {String(pokemon.name).toUpperCase()}
-                   <Button className={clases.modalButton} onClick={handleCompareClick} variant="secondary">Compare to...</Button> 
+                  <Button className={clases.modalButton} onClick={handleCompareClick} variant="secondary">Compare to...</Button>
                 </div>
               )
             })}
@@ -112,11 +125,11 @@ const ModalView = ({ setShow, modalViewState, selectedPokemons, cleanSelectedPok
                   <hr />
                   <h1 className={clases.name}>Stats</h1>
                   <ChartTool
-                    stats={pokemon.stats.map((stat) => { 
+                    stats={pokemon.stats.map((stat) => {
                       return stat.stat.name
                     })}
-                    bases={pokemon.stats.map((stat) => { 
-                      return stat.base_stat  
+                    bases={pokemon.stats.map((stat) => {
+                      return stat.base_stat
                     })}
                     name={pokemon.name}
                     color={pokemon.color.name}
@@ -135,14 +148,16 @@ const ModalView = ({ setShow, modalViewState, selectedPokemons, cleanSelectedPok
 const mapStateToProps = (state) => {
   return {
     modalViewState: state.modalView.showWindow,
-    selectedPokemons: state.pokemons.selectedPokemons
+    selectedPokemons: state.pokemons.selectedPokemons,
+    showToast: state.pokemons.showToast
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     setShow: (oldState) => dispatch(setShow(oldState)),
-    cleanSelectedPokemons: () => dispatch(cleanSelectedPokemons())
+    cleanSelectedPokemons: () => dispatch(cleanSelectedPokemons()),
+    setShowToast: () => dispatch(setShowToast()),
   }
 }
 

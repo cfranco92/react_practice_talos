@@ -8,6 +8,7 @@ export const FILTER_POKEMONS = 'FILTER_POKEMONS'
 export const TRIGEER_FETCH = 'TRIGEER_FETCH'
 export const ADD_SELECTED_POKEMON = 'ADD_SELECTED_POKEMON'
 export const CLEAN_SELECTED_POKEMON = 'CLEAN_SELECTED_POKEMON'
+export const SET_SHOW_TOAST = 'SET_SHOW_TOAST'
 
 
 export const fetchPokemons = (counter) => (dispatch) => {
@@ -73,6 +74,15 @@ export const cleanSelectedPokemons = () => (dispatch) => {
     type: CLEAN_SELECTED_POKEMON,
     payload: {
       pokemons: []
+    }
+  })
+}
+
+export const setShowToast = (showToast) => (dispatch) => {
+  dispatch({
+    type: SET_SHOW_TOAST,
+    payload: {
+      actualState: showToast
     }
   })
 }

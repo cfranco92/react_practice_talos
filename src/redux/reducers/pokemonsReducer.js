@@ -4,7 +4,8 @@ import {
   TRIGEER_FETCH,
   FETCH_POKEMONS_ERROR,
   ADD_SELECTED_POKEMON,
-  CLEAN_SELECTED_POKEMON
+  CLEAN_SELECTED_POKEMON,
+  SET_SHOW_TOAST
 } from '../actions/pokemonsActions'
 
 const initialState = {
@@ -14,7 +15,8 @@ const initialState = {
   nextQuery: null,
   previousQuery: null,
   queryCounter: 0,
-  selectedPokemons: []
+  selectedPokemons: [],
+  showToast: false
 }
 
 function pokemons(state = initialState, action) {
@@ -69,6 +71,12 @@ function pokemons(state = initialState, action) {
         selectedPokemons: [
           ...action.payload.pokemons
         ]
+      }
+
+    case SET_SHOW_TOAST:
+      return {
+        ...state,
+        showToast: !(state.showToast)
       }
 
     default:
