@@ -8,15 +8,14 @@ import { setShow } from '../../redux/actions/modalViewActions'
 import { cleanSelectedPokemons } from '../../redux/actions/pokemonsActions'
 import { setShowToast } from '../../redux/actions/pokemonsActions'
 
-const ModalView = (
-  {
-    setShow,
-    modalViewState,
-    selectedPokemons,
-    cleanSelectedPokemons,
-    setShowToast,
-    showToast
-  }) => {
+const ModalView = ({
+  setShow,
+  modalViewState,
+  selectedPokemons,
+  cleanSelectedPokemons,
+  setShowToast,
+  showToast
+}) => {
   const clases = styles
 
 

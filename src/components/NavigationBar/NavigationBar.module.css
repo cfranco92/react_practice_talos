@@ -1,3 +1,7 @@
+:root {
+    --black: #000000;
+}
+
 .navStyles {
     display: flex;
     padding: 20px;
@@ -5,11 +9,11 @@
 }
 
 .navActive {
-    color: black;
+    color: var(--black);
 }
 
 .linkColor {
-    color: black;
+    color: var(--black);
 }
 
 .navBar {

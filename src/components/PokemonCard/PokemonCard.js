@@ -16,7 +16,6 @@ const PokemonCard = ({ name, imageIndex, setShow, addSelectedPokemon, modalViewS
   const clases = styles
 
   const handleClick = (e) => {
-    console.log('from card', pokemonDescriptionUrl)
     addSelectedPokemon(
       {
         name: pokemonName, 
@@ -31,14 +30,12 @@ const PokemonCard = ({ name, imageIndex, setShow, addSelectedPokemon, modalViewS
 
   return (
     <div className={clases.component}>
-      {/* <Col xs={12} md={12}> */}
         <Card className={clases.card} onClick={handleClick}>
           <Image variant="top" src={`${imageURL}${pokemonImageIndex}.png`} className={clases.image} fluid />
           <Card.Footer className={clases.footer}>
             <small className="text-muted">{pokemonName}</small>
           </Card.Footer>
         </Card>
-      {/* </Col> */}
     </div>
   )
 

@@ -18,17 +18,13 @@ const ToastComponent = ({ selectedPokemons, showToast }) => {
     <div
       aria-live="polite"
       aria-atomic="true"
-      style={{
-        position: 'relative',
-        // minHeight: '100px',  
-      }}
+      className={clases.dtoast}
     >
       <Toast
         className={clases.toast}
         show={showToast}
       >
         <Toast.Header closeButton={false}>
-          {/* <img src="holder.js/20x20?text=%20" className="rounded mr-2" alt="" /> */}
           <strong className="mr-auto">Comparing pokemon</strong>
         </Toast.Header>
         <Toast.Body>{String(pokemonName).toUpperCase()}</Toast.Body>
@@ -46,7 +42,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    
+
   }
 }
 
