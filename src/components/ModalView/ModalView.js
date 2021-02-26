@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import styles from './ModalView.module.css'
 import { Modal, Image, Row, Col, Table } from 'react-bootstrap';
@@ -6,9 +6,6 @@ import ChartTool from '../ChartTool'
 import { setShow } from '../../redux/actions/modalViewActions'
 
 const ModalView = ({ setShow, modalViewState, selectedPokemons }) => {
-  console.log(selectedPokemons[1])
-  // const [pokemonImageIndex] = useState(selectedPokemons[1].image)
-  // const [pokemonName] = useState(selectedPokemons[1].name)
   const clases = styles
 
 
@@ -18,7 +15,6 @@ const ModalView = ({ setShow, modalViewState, selectedPokemons }) => {
 
   return (
     <>
-      {/* <Button onClick={handleClick}>Large modal</Button> */}
       <Modal
         size="lg"
         show={modalViewState}
@@ -46,67 +42,80 @@ const ModalView = ({ setShow, modalViewState, selectedPokemons }) => {
                       <Image variant="top" src={`${pokemon.image}`} className={clases.image} fluid />
                     </Col>
                     <Col xs={8} md={8}>
-                        Description going to be here
+                      Description going to be here
                       <hr />
-                        <Table borderless size='sm'>
-                          <thead>
-                            <tr>
-                              <th>Height</th>
-                              <th>Weight</th>
-                              <th>Gender</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>{pokemon.height}m</td>
-                              <td>{pokemon.weight}kg</td>
-                              <td>Female</td>
-                            </tr>
-                          </tbody>
-                        </Table>
-                        <Table borderless size='sm'>
-                          <thead>
-                            <tr>
-                              <th>Abilities</th>
-                              <th>Type</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>
-                                <ul>
-                                  {
-                                    pokemon.abilities.map((abilities) => {
-                                      return (
-                                        <li key={abilities.ability.name}>
-                                          {abilities.ability.name}
-                                        </li>
-                                      )
-                                    })
-                                  }
-                                </ul>
-                              </td>
-                              <td>
-                                <ul>
-                                  {
-                                    pokemon.types.map((types) => {
-                                      return (
-                                        <li key={types.type.name}>
-                                          {types.type.name}
-                                        </li>
-                                      )
-                                    })
-                                  }
-                                </ul>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </Table>
+                      <Table borderless size='sm'>
+                        <thead>
+                          <tr>
+                            <th>Height</th>
+                            <th>Weight</th>
+                            <th>Gender</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>{pokemon.height}m</td>
+                            <td>{pokemon.weight}kg</td>
+                            <td>Female</td>
+                          </tr>
+                        </tbody>
+                      </Table>
+                      <Table borderless size='sm'>
+                        <thead>
+                          <tr>
+                            <th>Abilities</th>
+                            <th>Type</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              <ul>
+                                {
+                                  pokemon.abilities.map((abilities) => {
+                                    return (
+                                      <li key={abilities.ability.name}>
+                                        {abilities.ability.name}
+                                      </li>
+                                    )
+                                  })
+                                }
+                              </ul>
+                            </td>
+                            <td>
+                              <ul>
+                                {
+                                  pokemon.types.map((types) => {
+                                    return (
+                                      <li key={types.type.name}>
+                                        {types.type.name}
+                                      </li>
+                                    )
+                                  })
+                                }
+                              </ul>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </Table>
                     </Col>
                   </Row>
                   <hr />
                   <h1 className={clases.name}>Stats</h1>
-                  <ChartTool />
+                  <ChartTool
+                    stats={pokemon.stats.map((stat) => { 
+                      return stat.stat.name
+                    })}
+                    // stats={pokemon.stats.map((stat) => { 
+                    //   return {
+                    //     name: stat.stat.name,
+                    //     base: stat.base_stat  
+                    //   }
+                    // })}
+                    bases={pokemon.stats.map((stat) => { 
+                      return stat.base_stat  
+                    })}
+                  />
                 </div>
 
               </div>
