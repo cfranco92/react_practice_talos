@@ -6,7 +6,7 @@ const Charts = ({ stats, bases, name, color }) => {
   const [statsName] = useState(stats)
   const [basesData] = useState(bases)
   const [pokemonName] = useState(name)
-  const [pokemonColor] = useState(color)
+  const [pokemonColor] = useState(color === 'white' ? 'black' : color )
 
   const chartRef = useRef()
   const clases = styles

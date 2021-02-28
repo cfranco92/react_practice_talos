@@ -18,7 +18,6 @@ const ModalView = ({
 }) => {
   const clases = styles
 
-
   const handleClick = (e) => {
     setShow(modalViewState)
     cleanSelectedPokemons()
@@ -81,9 +80,9 @@ const ModalView = ({
                           <td>{selectedPokemons[1].height}m</td>
                         </tr>
                         <tr>
-                          <td>Female</td>
+                          <td>{selectedPokemons[0].gender}</td>
                           <th>Gender</th>
-                          <td>Female</td>
+                          <td>{selectedPokemons[1].gender}</td>
                         </tr>
                         <tr>
                           <td>
@@ -183,7 +182,7 @@ const ModalView = ({
                             <tr>
                               <td>{pokemon.height}m</td>
                               <td>{pokemon.weight}kg</td>
-                              <td>Female</td>
+                              <td>{selectedPokemons[0].gender}</td>
                             </tr>
                           </tbody>
                         </Table>

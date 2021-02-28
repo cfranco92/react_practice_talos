@@ -46,17 +46,22 @@ export const triggerFetch = (actualConter) => (dispatch) => {
 }
 
 export const addSelectedPokemon = (pokemon, url, url2) => (dispatch) => {
-  console.log('url2',url2)
   Promise.all([
     fetch(url).then(res => res.json()),
     fetch(url2).then(res2 => res2.json())
   ]).then(([res, res2]) => {
+    if (res2.gender_rate >= 0 && res2.gender_rate <=4){
+      res2.gender = 'Male'
+    } else {
+      res2.gender = 'Female'
+    }
+    
     dispatch({
       type: ADD_SELECTED_POKEMON,
       payload: {
         pokemons: res,
+        pokemonDescription: res2,
         pokemon: pokemon,
-        pokemonDescription: res2
       }
     })
   }).catch(error => {
