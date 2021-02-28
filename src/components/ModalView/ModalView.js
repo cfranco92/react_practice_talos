@@ -68,7 +68,7 @@ const ModalView = ({
                     <Table borderless size='sm' className={clases.tableInformation}>
                       <thead>
                         <tr>
-                          <td className={clases.tableInformation}>{selectedPokemons[0].height}m</td>
+                          <td>{selectedPokemons[0].height}m</td>
                           <th>Height</th>
                           <td>{selectedPokemons[1].height}m</td>
                         </tr>
@@ -77,7 +77,7 @@ const ModalView = ({
                         <tr>
                           <td>{selectedPokemons[0].weight}kg</td>
                           <th>Weight</th>
-                          <td>{selectedPokemons[1].height}m</td>
+                          <td>{selectedPokemons[1].weight}kg</td>
                         </tr>
                         <tr>
                           <td>{selectedPokemons[0].gender}</td>
