@@ -9,7 +9,7 @@ const DobleChartTool = ({ stats, bases, name, color, stats2, bases2, name2, colo
   const [pokemonColor] = useState(color === 'white' ? 'black' : color )
   const [basesData2] = useState(bases2)
   const [pokemonName2] = useState(name2)
-  const [pokemonColor2] = useState(color2)
+  const [pokemonColor2] = useState(color2 === 'white' || color2 === color ? 'black-light' : color2 )
 
   console.log(color)
 
