@@ -1,15 +1,20 @@
+:root {
+  --subtitle-text-size: 1.25rem;
+  --weightColor: rgb(11, 0, 0);
+}
+
 .image {
   width: 100%;
 }
 
 .name {
   text-align: center;
-  font-size: 1.25rem;
-  font-weight: bold;
+  font-size: var(--subtitle-text-size);
+  font-weight: var(--weightColor);
 }
 
 .subtitle {
-  font-size: 1.25rem;
+  font-size: var(--subtitle-text-size);
 }
 
 .modalButton {

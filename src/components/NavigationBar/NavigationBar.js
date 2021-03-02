@@ -16,7 +16,6 @@ const NavegationBar = ({ navBar, addSearch}) => {
 
   const handleInput = (e) => {
     addSearch(e.target.value)
-    console.log(input)
   }
 
   return (

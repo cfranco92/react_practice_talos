@@ -28,7 +28,7 @@ const ModalView = ({
   }
 
   return (
-    <>
+    <div>
       {showToast && selectedPokemons.length > 1
         ?
         <ModalTwoPokemons
@@ -44,10 +44,8 @@ const ModalView = ({
           cleanPokemonArray={cleanPokemonArray}
           keepPokemon={keepPokemon}
         />
-
-
       }
-    </>
+    </div>
   );
 }
 

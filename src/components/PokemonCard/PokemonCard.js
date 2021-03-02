@@ -13,8 +13,6 @@ const PokemonCard = ({ name, imageIndex, setShow, addSelectedPokemon, modalViewS
   const [pokemonDescriptionUrl] = useState(`https://pokeapi.co/api/v2/pokemon-species/${imageIndex}/`)
   const [imageURL] = useState('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/')
 
-  const clases = styles
-
   const handleClick = (e) => {
     addSelectedPokemon(
       {
@@ -29,10 +27,10 @@ const PokemonCard = ({ name, imageIndex, setShow, addSelectedPokemon, modalViewS
 }
 
   return (
-    <div className={clases.component}>
-        <Card className={clases.card} onClick={handleClick}>
-          <Image variant="top" src={`${imageURL}${pokemonImageIndex}.png`} className={clases.image} fluid />
-          <Card.Footer className={clases.footer}>
+    <div className={styles.component}>
+        <Card className={styles.card} onClick={handleClick}>
+          <Image variant="top" src={`${imageURL}${pokemonImageIndex}.png`} className={styles.image} fluid />
+          <Card.Footer className={styles.footer}>
             <small className="text-muted">{pokemonName}</small>
           </Card.Footer>
         </Card>
