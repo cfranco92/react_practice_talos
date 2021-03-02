@@ -12,11 +12,10 @@ export const SET_SHOW_TOAST = 'SET_SHOW_TOAST'
 
 
 export const fetchPokemons = (counter) => (dispatch) => {
-  let url0 = 'https://pokeapi.co/api/v2/pokemon?offset='
-  let url1 = '&limit=20'
+  const url = `https://pokeapi.co/api/v2/pokemon?offset=${counter}&limit=20`
   dispatch({ type: FETCH_POKEMONS_REQUEST })
 
-  fetch(`${url0}${counter}${url1}`)
+  fetch(url)
     .then(res => res.json())
     .then(query => {
       dispatch({
