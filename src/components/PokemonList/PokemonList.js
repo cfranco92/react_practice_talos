@@ -7,8 +7,6 @@ import styles from './PokemonList.module.css'
 import ModalView from '../ModalView/ModalView';
 
 const PokemonList = ({ pokemonsQuery, fetchPokemons, navBarState, triggerFetch, queryCounter }) => {
-  const clases = styles
-
   useEffect(() => {
     fetchPokemons(queryCounter)
   }, [fetchPokemons, queryCounter])
@@ -21,7 +19,7 @@ const PokemonList = ({ pokemonsQuery, fetchPokemons, navBarState, triggerFetch, 
 
   return (
     <div>
-      <Row className={clases.row}>
+      <Row className={styles.row}>
         {pokemonsQuery.map((pokemon, index) => {
           if (pokemon.name.toLowerCase().includes(navBarState.search.toLowerCase())) {
             return (

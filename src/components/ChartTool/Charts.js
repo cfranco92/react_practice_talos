@@ -1,41 +1,35 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import styles from './Charts.module.css'
 import Chart from 'chart.js'
 
 const Charts = ({ stats, bases, name, color }) => {
-  const [statsName] = useState(stats)
-  const [basesData] = useState(bases)
-  const [pokemonName] = useState(name)
-  const [pokemonColor] = useState(color === 'white' ? 'black' : color )
-
   const chartRef = useRef()
-  const clases = styles
 
   useEffect(() => {
     const ctx = chartRef.current.getContext('2d')
     new Chart(ctx, {
       type: 'bar',
       data: {
-        labels: statsName,
+        labels: stats,
         datasets: [
           {
-            label: String(pokemonName).toUpperCase(),
-            data: basesData,
+            label: String(name).toUpperCase(),
+            data: bases,
             backgroundColor: [
-              pokemonColor,
-              pokemonColor,
-              pokemonColor,
-              pokemonColor,
-              pokemonColor,
-              pokemonColor,
+              color,
+              color,
+              color,
+              color,
+              color,
+              color,
             ],
             borderColor: [
-              pokemonColor,
-              pokemonColor,
-              pokemonColor,
-              pokemonColor,
-              pokemonColor,
-              pokemonColor,
+              color,
+              color,
+              color,
+              color,
+              color,
+              color,
             ],
             borderWidth: 1
           },
@@ -54,7 +48,7 @@ const Charts = ({ stats, bases, name, color }) => {
   })
 
   return (
-    <div className={clases.rectangle}>
+    <div className={styles.rectangle}>
       <canvas
         ref={chartRef}
         width='400'

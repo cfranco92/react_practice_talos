@@ -6,27 +6,21 @@ import styles from './NavigationBar.module.css'
 import { addSearch } from '../../redux/actions/navBarActions'
 import Toast from '../ToastComponent/ToastComponent'
 
-const NavegationBar = ({ navBar, addSearch}) => {
-  const clases = styles
+const NavegationBar = ({ addSearch}) => {
   const input = useRef()
 
-  const NavActive = {
-    color: 'black'
-  }
-
-  const handleInput = (e) => {
+  const getInput = (e) => {
     addSearch(e.target.value)
   }
 
   return (
-    <nav className={clases.navBar}>
+    <nav className={styles.navBar}>
       <Navbar bg="light" expand="lg">
         <Navbar.Brand>
           <NavLink
             to='/home'
-            activeClassName={clases.navActive}
-            activeStyle={NavActive}
-            className={clases.linkColor}
+            activeClassName={styles.navActive}
+            className={styles.linkColor}
           >
             PokéApp
           </NavLink>
@@ -38,18 +32,16 @@ const NavegationBar = ({ navBar, addSearch}) => {
               as={NavLink}
               to='/'
               exact
-              activeClassName={clases.navActive}
-              activeStyle={NavActive}
-              className={clases.linkColor}
+              activeClassName={styles.navActive}
+              className={styles.linkColor}
             >
               Pokemons
             </Nav.Link>
             <Nav.Link
               as={NavLink}
               to='/items'
-              activeClassName={clases.navActive}
-              activeStyle={NavActive}
-              className={clases.linkColor}
+              activeClassName={styles.navActive}
+              className={styles.linkColor}
             >
               Items
             </Nav.Link>
@@ -58,7 +50,7 @@ const NavegationBar = ({ navBar, addSearch}) => {
             <FormControl
               type="text"
               placeholder="Search"
-              onChange={handleInput}
+              onChange={getInput}
               ref={input}
               className="mr-sm-2"
             />

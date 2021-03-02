@@ -1,16 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import styles from './DobleChartTool.module.css'
 import Chart from 'chart.js'
 
-const DobleChartTool = ({ stats, bases, name, color, stats2, bases2, name2, color2 }) => {
-  const [statsName] = useState(stats)
-  const [basesData] = useState(bases)
-  const [pokemonName] = useState(name)
-  const [pokemonColor] = useState(color === 'white' ? 'black' : color )
-  const [basesData2] = useState(bases2)
-  const [pokemonName2] = useState(name2)
-  const [pokemonColor2] = useState(color2 === 'white' || color2 === color ? 'black-light' : color2 )
-
+const DobleChartTool = ({ stats, bases, name, color, bases2, name2, color2 }) => {
   const chartRef = useRef()
   const clases = styles
 
@@ -19,47 +11,47 @@ const DobleChartTool = ({ stats, bases, name, color, stats2, bases2, name2, colo
     new Chart(ctx, {
       type: 'bar',
       data: {
-        labels: statsName,
+        labels: stats,
         datasets: [
           {
-            label: String(pokemonName).toUpperCase(),
-            data: basesData,
+            label: String(name).toUpperCase(),
+            data: bases,
             backgroundColor: [
-              pokemonColor,
-              pokemonColor,
-              pokemonColor,
-              pokemonColor,
-              pokemonColor,
-              pokemonColor,
+              color,
+              color,
+              color,
+              color,
+              color,
+              color,
             ],
             borderColor: [
-              pokemonColor,
-              pokemonColor,
-              pokemonColor,
-              pokemonColor,
-              pokemonColor,
-              pokemonColor,
+              color,
+              color,
+              color,
+              color,
+              color,
+              color,
             ],
             borderWidth: 1
           },
           {
-            label: String(pokemonName2).toUpperCase(),
-            data: basesData2,
+            label: String(name2).toUpperCase(),
+            data: bases2,
             backgroundColor: [
-              pokemonColor2,
-              pokemonColor2,
-              pokemonColor2,
-              pokemonColor2,
-              pokemonColor2,
-              pokemonColor2,
+              color2,
+              color2,
+              color2,
+              color2,
+              color2,
+              color2,
             ],
             borderColor: [
-              pokemonColor2,
-              pokemonColor2,
-              pokemonColor2,
-              pokemonColor2,
-              pokemonColor2,
-              pokemonColor2,
+              color2,
+              color2,
+              color2,
+              color2,
+              color2,
+              color2,
             ],
             borderWidth: 1
           }

@@ -6,7 +6,6 @@ import { Toast } from 'react-bootstrap'
 
 const ToastComponent = ({ selectedPokemons, showToast }) => {
   const [pokemonName, setPokemonName] = useState()
-  const clases = styles
 
   useEffect(() => {
     if (selectedPokemons.length > 0) {
@@ -18,10 +17,10 @@ const ToastComponent = ({ selectedPokemons, showToast }) => {
     <div
       aria-live="polite"
       aria-atomic="true"
-      className={clases.dtoast}
+      className={styles.dtoast}
     >
       <Toast
-        className={clases.toast}
+        className={styles.toast}
         show={showToast}
       >
         <Toast.Header closeButton={false}>

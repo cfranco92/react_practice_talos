@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import styles from './PokemonCard.module.css'
 import { Card, Image } from 'react-bootstrap';
@@ -6,34 +6,30 @@ import { setShow } from '../../redux/actions/modalViewActions'
 import { addSelectedPokemon } from '../../redux/actions/pokemonsActions'
 
 
-const PokemonCard = ({ name, imageIndex, setShow, addSelectedPokemon, modalViewState, url}) => {
-  const [pokemonName] = useState(name)
-  const [pokemonImageIndex] = useState(imageIndex)
-  const [pokemonUrl] = useState(url)
-  const [pokemonDescriptionUrl] = useState(`https://pokeapi.co/api/v2/pokemon-species/${imageIndex}/`)
-  const [imageURL] = useState('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/')
+const PokemonCard = ({ name, imageIndex, setShow, addSelectedPokemon, modalViewState, url }) => {
+  const imageURL = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${imageIndex}.png`
 
-  const handleClick = (e) => {
+  const addPokemonModelView = (e) => {
     addSelectedPokemon(
       {
-        name: pokemonName, 
-        imageIndex: pokemonImageIndex, 
-        image: `${imageURL}${pokemonImageIndex}.png`
-      }, 
-      pokemonUrl,
-      pokemonDescriptionUrl
+        name: name,
+        imageIndex: imageIndex,
+        image: imageURL
+      },
+      url,
+      `https://pokeapi.co/api/v2/pokemon-species/${imageIndex}/`
     )
     setShow(modalViewState)
-}
+  }
 
   return (
     <div className={styles.component}>
-        <Card className={styles.card} onClick={handleClick}>
-          <Image variant="top" src={`${imageURL}${pokemonImageIndex}.png`} className={styles.image} fluid />
-          <Card.Footer className={styles.footer}>
-            <small className="text-muted">{pokemonName}</small>
-          </Card.Footer>
-        </Card>
+      <Card className={styles.card} onClick={addPokemonModelView}>
+        <Image variant="top" src={imageURL} className={styles.image} fluid />
+        <Card.Footer className={styles.footer}>
+          <small className="text-muted">{name}</small>
+        </Card.Footer>
+      </Card>
     </div>
   )
 

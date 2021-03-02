@@ -100,7 +100,9 @@ const ModalOnePokemon = ({ keepPokemon, selectedPokemons, modalViewState, cleanP
                   return stat.base_stat
                 })}
                 name={pokemon.name}
-                color={pokemon.color.name}
+                color={
+                  pokemon.color.name === 'white' ? 'black' : pokemon.color.name
+                }
               />
             </div>
 

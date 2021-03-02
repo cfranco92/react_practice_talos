@@ -91,7 +91,9 @@ const ModalTwoPokemon = ({ selectedPokemons, modalViewState, cleanPokemonArray }
                     return stat.base_stat
                   })}
                   name={selectedPokemons[0].name}
-                  color={selectedPokemons[0].color.name}
+                  color={
+                    selectedPokemons[0].color.name === 'white' ? 'black' : selectedPokemons[0].color.name
+                  }
                   stats2={selectedPokemons[1].stats.map((stat) => {
                     return stat.stat.name
                   })}
@@ -99,7 +101,9 @@ const ModalTwoPokemon = ({ selectedPokemons, modalViewState, cleanPokemonArray }
                     return stat.base_stat
                   })}
                   name2={selectedPokemons[1].name}
-                  color2={selectedPokemons[1].color.name}
+                  color2={
+                    selectedPokemons[1].color.name === 'white' || selectedPokemons[1].color.name === selectedPokemons[0].color.name ? 'black-light' : selectedPokemons[1].color.name
+                  }
                 />
               </div>
             </div>

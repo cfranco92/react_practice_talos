@@ -15,7 +15,9 @@ const Home = () => {
             as={NavLink}
             to='/' 
             variant="secondary"
-          > Open Pokémons List</Button>
+          > 
+            Open Pokémons List
+          </Button>
         </Card.Body>
         <Card.Footer className="text-muted">By Cristian Franco Bedoya for Talos Digital</Card.Footer>
       </Card>
