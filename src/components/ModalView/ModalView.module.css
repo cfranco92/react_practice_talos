@@ -1,21 +1,21 @@
 .image {
-    width: 100%;
+  width: 100%;
 }
 
 .name {
-    text-align: center;
-    font-size: 1.25rem;
-    font-weight: bold;
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: bold;
 }
 
 .subtitle {
-    font-size: 1.25rem;
+  font-size: 1.25rem;
 }
 
 .modalButton {
-    margin-left: 10px;
+  margin-left: 10px;
 }
 
 .tableInformation {
-    text-align: center;
+  text-align: center;
 }
