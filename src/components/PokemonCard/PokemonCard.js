@@ -4,7 +4,7 @@ import styles from './PokemonCard.module.css'
 import { Card, Image } from 'react-bootstrap';
 import { setShow } from '../../redux/actions/modalViewActions'
 import { addSelectedPokemon } from '../../redux/actions/pokemonsActions'
-import { API } from '../../utils'
+import { API, POKEMON_IMAGE_URL } from '../../utils'
 
 
 const PokemonCard = ({
@@ -15,10 +15,9 @@ const PokemonCard = ({
   modalViewState,
   url
 }) => {
-  const imageURL = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/'
-    + `sprites/pokemon/${imageIndex}.png`
+  const imageURL = `${POKEMON_IMAGE_URL}${imageIndex}.png`
 
-  const addPokemonModelView = (e) => {
+  const addPokemonModelView = () => {
     addSelectedPokemon(
       {
         name: name,

@@ -48,12 +48,15 @@ export const addSelectedPokemon = (pokemon, pokemonUrl, pokemonDescriptionUrl) =
     fetch(pokemonUrl).then(pokemonRes => pokemonRes.json()),
     fetch(pokemonDescriptionUrl).then(pokemonDescriptionRes => pokemonDescriptionRes.json())
   ]).then(([pokemonRes, pokemonDescriptionRes]) => {
-    if (pokemonDescriptionRes.gender_rate >= 0 && pokemonDescriptionRes.gender_rate <=4){
+    if (pokemonDescriptionRes.gender_rate >= 0 && pokemonDescriptionRes.gender_rate <= 4) {
       pokemonDescriptionRes.gender = 'Male'
-    } else {
+    } else if (pokemonDescriptionRes.gender_rate === -1) {
+      pokemonDescriptionRes.gender = 'Genderless'
+    }
+    else {
       pokemonDescriptionRes.gender = 'Female'
     }
-    
+
     dispatch({
       type: ADD_SELECTED_POKEMON,
       payload: {
