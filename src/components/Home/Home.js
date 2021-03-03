@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom'
 const Home = () => {
   return (
     <div>
-      <Card className="text-center">
+      <Card className='text-center'>
         <Card.Body>
           <Card.Title><h1>Welcome to PokéApp</h1></Card.Title>
           <Card.Text>
@@ -14,12 +14,12 @@ const Home = () => {
           <Button
             as={NavLink}
             to='/' 
-            variant="secondary"
+            variant='secondary'
           > 
             Open Pokémons List
           </Button>
         </Card.Body>
-        <Card.Footer className="text-muted">By Cristian Franco Bedoya for Talos Digital</Card.Footer>
+        <Card.Footer className='text-muted'>By Cristian Franco Bedoya for Talos Digital</Card.Footer>
       </Card>
 
     </div>

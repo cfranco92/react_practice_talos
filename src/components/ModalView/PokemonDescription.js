@@ -3,20 +3,20 @@ import styles from './ModalView.module.css'
 import { Modal, Image, Row, Col, Table, Button } from 'react-bootstrap';
 import ChartTool from '../ChartTool'
 
-const ModalOnePokemon = ({ keepPokemon, selectedPokemons, modalViewState, cleanPokemonArray }) => (
+const PokemonDescription = ({ keepPokemon, selectedPokemons, modalViewState, cleanPokemonArray }) => (
   <Modal
-    size="m"
+    size='m'
     show={modalViewState}
     onHide={cleanPokemonArray}
-    aria-labelledby="example-modal-sizes-title-lg"
+    aria-labelledby='example-modal-sizes-title-lg'
   >
     <Modal.Header closeButton>
-      <Modal.Title id="example-modal-sizes-title-lg">
+      <Modal.Title id='example-modal-sizes-title-lg'>
         {selectedPokemons.map((pokemon, index = 1) => {
           return (
             <div key={index + Math.random()}>
               {String(pokemon.name).toUpperCase()}
-              <Button className={styles.modalButton} onClick={keepPokemon} variant="secondary">Compare to...</Button>
+              <Button className={styles.modalButton} onClick={keepPokemon} variant='secondary'>Compare to...</Button>
             </div>
           )
         })}
@@ -29,7 +29,7 @@ const ModalOnePokemon = ({ keepPokemon, selectedPokemons, modalViewState, cleanP
             <div>
               <Row>
                 <Col xs={4} md={4}>
-                  <Image variant="top" src={`${pokemon.image}`} className={styles.image} fluid />
+                  <Image variant='top' src={`${pokemon.image}`} className={styles.image} fluid />
                 </Col>
                 <Col xs={8} md={8}>
                   {pokemon.flavor_text_entries[1].flavor_text}
@@ -113,4 +113,4 @@ const ModalOnePokemon = ({ keepPokemon, selectedPokemons, modalViewState, cleanP
   </Modal>
 )
 
-export default ModalOnePokemon
+export default PokemonDescription

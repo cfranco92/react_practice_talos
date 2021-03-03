@@ -4,6 +4,7 @@ import styles from './PokemonCard.module.css'
 import { Card, Image } from 'react-bootstrap';
 import { setShow } from '../../redux/actions/modalViewActions'
 import { addSelectedPokemon } from '../../redux/actions/pokemonsActions'
+import { API } from '../../utils'
 
 
 const PokemonCard = ({
@@ -25,7 +26,7 @@ const PokemonCard = ({
         image: imageURL
       },
       url,
-      `https://pokeapi.co/api/v2/pokemon-species/${imageIndex}/`
+      `${API}pokemon-species/${imageIndex}/`
     )
     setShow(modalViewState)
   }
@@ -33,9 +34,9 @@ const PokemonCard = ({
   return (
     <div className={styles.component}>
       <Card className={styles.card} onClick={addPokemonModelView}>
-        <Image variant="top" src={imageURL} className={styles.image} fluid />
+        <Image variant='top' src={imageURL} className={styles.image} fluid />
         <Card.Footer className={styles.footer}>
-          <small className="text-muted">{name}</small>
+          <small className='text-muted'>{name}</small>
         </Card.Footer>
       </Card>
     </div>
@@ -52,9 +53,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     setShow: (oldState) => dispatch(setShow(oldState)),
-    addSelectedPokemon: (pokemon, url, url2) =>
+    addSelectedPokemon: (pokemon, pokemonUrl, pokemonDescriptionUrl) =>
       dispatch(
-        addSelectedPokemon(pokemon, url, url2)
+        addSelectedPokemon(pokemon, pokemonUrl, pokemonDescriptionUrl)
       )
   }
 }

@@ -15,8 +15,8 @@ const ToastComponent = ({ selectedPokemons, showToast }) => {
 
   return (
     <div
-      aria-live="polite"
-      aria-atomic="true"
+      aria-live='polite'
+      aria-atomic='true'
       className={styles.dtoast}
     >
       <Toast
@@ -24,7 +24,7 @@ const ToastComponent = ({ selectedPokemons, showToast }) => {
         show={showToast}
       >
         <Toast.Header closeButton={false}>
-          <strong className="mr-auto">Comparing pokemon</strong>
+          <strong className='mr-auto'>Comparing pokemon</strong>
         </Toast.Header>
         <Toast.Body>{String(pokemonName).toUpperCase()}</Toast.Body>
       </Toast>

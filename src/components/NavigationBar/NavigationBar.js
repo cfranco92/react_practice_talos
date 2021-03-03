@@ -9,13 +9,13 @@ import Toast from '../ToastComponent/ToastComponent'
 const NavegationBar = ({ addSearch}) => {
   const input = useRef()
 
-  const getInput = (e) => {
-    addSearch(e.target.value)
+  const getInput = (inputEvent) => {
+    addSearch(inputEvent.target.value)
   }
 
   return (
     <nav className={styles.navBar}>
-      <Navbar bg="light" expand="lg">
+      <Navbar bg='light' expand='lg'>
         <Navbar.Brand>
           <NavLink
             to='/home'
@@ -25,9 +25,9 @@ const NavegationBar = ({ addSearch}) => {
             PokéApp
           </NavLink>
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mr-auto">
+        <Navbar.Toggle aria-controls='basic-navbar-nav' />
+        <Navbar.Collapse id='basic-navbar-nav'>
+          <Nav className='mr-auto'>
             <Nav.Link
               as={NavLink}
               to='/'
@@ -48,11 +48,11 @@ const NavegationBar = ({ addSearch}) => {
           </Nav>
           <Form inline>
             <FormControl
-              type="text"
-              placeholder="Search"
+              type='text'
+              placeholder='Search'
               onChange={getInput}
               ref={input}
-              className="mr-sm-2"
+              className='mr-sm-2'
             />
           </Form>
         </Navbar.Collapse>

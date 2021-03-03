@@ -6,7 +6,7 @@ import PokemonCard from '../PokemonCard';
 import styles from './PokemonList.module.css'
 import ModalView from '../ModalView/ModalView';
 
-const PokemonList = ({ pokemonsQuery, fetchPokemons, navBarState, triggerFetch, queryCounter }) => {
+const PokemonList = ({ pokemonsQuery, fetchPokemons, triggerFetch, queryCounter }) => {
   useEffect(() => {
     fetchPokemons(queryCounter)
   }, [fetchPokemons, queryCounter])
@@ -64,3 +64,4 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(PokemonList)
+ 

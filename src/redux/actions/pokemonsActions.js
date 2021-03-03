@@ -1,5 +1,4 @@
-
-
+import { API } from '../../utils'
 export const FETCH_POKEMONS_REQUEST = 'FETCH_POSTS_REQUEST'
 export const FETCH_POKEMONS_SUCCESS = 'FETCH_POSTS_SUCCESS'
 export const FETCH_POKEMONS_SUCCESS2 = 'FETCH_POSTS_SUCCESS2'
@@ -12,7 +11,7 @@ export const SET_SHOW_TOAST = 'SET_SHOW_TOAST'
 
 
 export const fetchPokemons = (counter) => (dispatch) => {
-  const url = `https://pokeapi.co/api/v2/pokemon?offset=${counter}&limit=20`
+  const url = `${API}pokemon?offset=${counter}&limit=20`
   dispatch({ type: FETCH_POKEMONS_REQUEST })
 
   fetch(url)
@@ -44,22 +43,22 @@ export const triggerFetch = (actualConter) => (dispatch) => {
   })
 }
 
-export const addSelectedPokemon = (pokemon, url, url2) => (dispatch) => {
+export const addSelectedPokemon = (pokemon, pokemonUrl, pokemonDescriptionUrl) => (dispatch) => {
   Promise.all([
-    fetch(url).then(res => res.json()),
-    fetch(url2).then(res2 => res2.json())
-  ]).then(([res, res2]) => {
-    if (res2.gender_rate >= 0 && res2.gender_rate <=4){
-      res2.gender = 'Male'
+    fetch(pokemonUrl).then(pokemonRes => pokemonRes.json()),
+    fetch(pokemonDescriptionUrl).then(pokemonDescriptionRes => pokemonDescriptionRes.json())
+  ]).then(([pokemonRes, pokemonDescriptionRes]) => {
+    if (pokemonDescriptionRes.gender_rate >= 0 && pokemonDescriptionRes.gender_rate <=4){
+      pokemonDescriptionRes.gender = 'Male'
     } else {
-      res2.gender = 'Female'
+      pokemonDescriptionRes.gender = 'Female'
     }
     
     dispatch({
       type: ADD_SELECTED_POKEMON,
       payload: {
-        pokemons: res,
-        pokemonDescription: res2,
+        pokemons: pokemonRes,
+        pokemonDescription: pokemonDescriptionRes,
         pokemon: pokemon,
       }
     })

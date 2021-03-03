@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import ModalOnePokemon from './ModalOnePokemon'
-import ModalTwoPokemons from './ModalTwoPokemons'
+import PokemonDescription from './PokemonDescription'
+import PokemonCompare from './PokemonCompare'
 import { setShow } from '../../redux/actions/modalViewActions'
 import { cleanSelectedPokemons } from '../../redux/actions/pokemonsActions'
 import { setShowToast } from '../../redux/actions/pokemonsActions'
@@ -31,13 +31,13 @@ const ModalView = ({
     <div>
       {selectedPokemons.length > 1 && showToast
         ?
-        <ModalTwoPokemons
+        <PokemonCompare
           selectedPokemons={selectedPokemons}
           modalViewState={modalViewState}
           cleanPokemonArray={cleanPokemonArray}
         />
         :
-        <ModalOnePokemon
+        <PokemonDescription
           selectedPokemons={selectedPokemons}
           modalViewState={modalViewState}
           cleanPokemonArray={cleanPokemonArray}
