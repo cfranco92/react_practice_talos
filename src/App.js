@@ -5,7 +5,6 @@ import store from './redux/store'
 
 import NavigationBar from './components/NavigationBar'
 import PokemonList from './components/PokemonList';
-import Items from './components/Items'
 import Home from './components/Home'
 
 const App = () => {
@@ -15,7 +14,7 @@ const App = () => {
         <NavigationBar />
         <Route path='/home' component={Home} />
         <Route path='/' exact component={PokemonList} />
-        <Route path='/items' render={Items} />
+        <Route path='/items' />
       </BrowserRouter>
     </Provider>
   )
