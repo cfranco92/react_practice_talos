@@ -21,21 +21,17 @@ const PokemonList = ({ pokemonsQuery, fetchPokemons, navBarState, triggerFetch, 
     <div>
       <Row className={styles.row}>
         {pokemonsQuery.map((pokemon, index) => {
-          if (pokemon.name.toLowerCase().includes(navBarState.search.toLowerCase())) {
-            return (
-              <div key={index + Math.random()}>
-                <Col >
-                  <PokemonCard
-                    name={pokemon.name}
-                    imageIndex={index + 1}
-                    url={pokemon.url}
-                  />
-                </Col>
-              </div>
-            )
-          } else {
-            return ''
-          }
+          return (
+            <div key={index + Math.random()}>
+              <Col >
+                <PokemonCard
+                  name={pokemon.name}
+                  imageIndex={pokemon.url.split('/')[6]}
+                  url={pokemon.url}
+                />
+              </Col>
+            </div>
+          )
         })}
       </Row>
       <div>
@@ -46,10 +42,10 @@ const PokemonList = ({ pokemonsQuery, fetchPokemons, navBarState, triggerFetch, 
 }
 
 const mapStateToProps = (state) => {
+  const { navBar } = state;
   return {
-    pokemonsQuery: state.pokemons.pokemonsArray,
-    navBarState: state.navBar,
-    queryCounter: state.pokemons.queryCounter
+    queryCounter: state.pokemons.queryCounter,
+    pokemonsQuery: state.pokemons.pokemonsArray.filter((pokemon) => pokemon.name.toLowerCase().includes(navBar.search.toLowerCase())),
   }
 }
 
