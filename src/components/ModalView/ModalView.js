@@ -29,14 +29,13 @@ const ModalView = ({
 
   return (
     <div>
-      {showToast && selectedPokemons.length > 1
+      {selectedPokemons.length > 1 && showToast
         ?
         <ModalTwoPokemons
           selectedPokemons={selectedPokemons}
           modalViewState={modalViewState}
           cleanPokemonArray={cleanPokemonArray}
         />
-
         :
         <ModalOnePokemon
           selectedPokemons={selectedPokemons}

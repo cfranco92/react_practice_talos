@@ -45,7 +45,11 @@ const mapStateToProps = (state) => {
   const { navBar } = state;
   return {
     queryCounter: state.pokemons.queryCounter,
-    pokemonsQuery: state.pokemons.pokemonsArray.filter((pokemon) => pokemon.name.toLowerCase().includes(navBar.search.toLowerCase())),
+    pokemonsQuery: state.pokemons.pokemonsArray.filter(
+      (pokemon) => pokemon.name.toLowerCase().includes(
+        navBar.search.toLowerCase()
+      )
+    )
   }
 }
 

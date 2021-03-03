@@ -4,7 +4,6 @@ import Chart from 'chart.js'
 
 const DobleChartTool = ({ stats, bases, name, color, bases2, name2, color2 }) => {
   const chartRef = useRef()
-  const clases = styles
 
   useEffect(() => {
     const ctx = chartRef.current.getContext('2d')
@@ -70,7 +69,7 @@ const DobleChartTool = ({ stats, bases, name, color, bases2, name2, color2 }) =>
   })
 
   return (
-    <div className={clases.rectangle}>
+    <div className={styles.rectangle}>
       <canvas
         ref={chartRef}
         width='400'

@@ -6,8 +6,16 @@ import { setShow } from '../../redux/actions/modalViewActions'
 import { addSelectedPokemon } from '../../redux/actions/pokemonsActions'
 
 
-const PokemonCard = ({ name, imageIndex, setShow, addSelectedPokemon, modalViewState, url }) => {
-  const imageURL = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${imageIndex}.png`
+const PokemonCard = ({
+  name,
+  imageIndex,
+  setShow,
+  addSelectedPokemon,
+  modalViewState,
+  url
+}) => {
+  const imageURL = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/'
+    + `sprites/pokemon/${imageIndex}.png`
 
   const addPokemonModelView = (e) => {
     addSelectedPokemon(
@@ -44,7 +52,10 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     setShow: (oldState) => dispatch(setShow(oldState)),
-    addSelectedPokemon: (pokemon, url, url2) => dispatch((addSelectedPokemon(pokemon, url, url2)))
+    addSelectedPokemon: (pokemon, url, url2) =>
+      dispatch(
+        addSelectedPokemon(pokemon, url, url2)
+      )
   }
 }
 
