@@ -1,31 +1,37 @@
+:root {
+  --black: #000;
+  --dark_black: #000000;
+  --white: #FFF;
+  --blue: #4a02f7;
+}
+
 .card {
-    border: 1px solid black;
-    margin-bottom: 1em;
-    border-radius: 0.5em;
-    padding: 1em;
-    background: #FFF;
-    color: #000;
-    transition: all 400ms ease-out;
-    width: 15%;
-    height: 15%;
-    display: 'inline-block'
+  margin-top: 10%;
+  background: var(--white);
+  color: var(--black);
+  transition: all 400ms ease-out;
+  width: auto;
+  display: 'inline-block';
+  text-align: center;
+  text-transform: uppercase
 }
 
 .card-active {
-    background: linear-gradient(45deg, black, #4a02f7);
-    ;
-    color: #FFF;
+  background: linear-gradient(45deg, var(--dark_black), var(--blue));
+  color: var(--white);
 }
 
 .image {
-    width: 100px;
-    height: 100px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    ;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 180px;
 }
 
 .name {
-    text-align: center;
+  text-align: center;
+}
+
+.card-footer {
+  padding: -0.25rem 1.25rem;
 }

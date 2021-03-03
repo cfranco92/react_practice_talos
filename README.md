@@ -1,12 +1,47 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) by Cristian Franco Bedoya.
+
+Online application links:
+* Features: 
+    ```https
+        https://react-practice-582a5.web.app/
+    ```
+* Production: 
+    ```https
+        TODO
+    ```
+
 
 
 This project was created with the following libraries:
+* React Bootstrap: 
+    ```https
+        https://react-bootstrap.github.io/
+    ```
 * Charts: 
     ```https
         https://www.chartjs.org/
+    ```
+* Redux DevTools Extension's helper: 
+    ```https
+        https://www.npmjs.com/package/redux-devtools-extension
+    ```
+* Redux Thunk: 
+    ```https
+        https://www.npmjs.com/package/redux-thunk
+    ```
+* Logger for Redux: 
+    ```https
+        https://www.npmjs.com/package/redux-logger
+    ```
+* React Redux: 
+    ```https
+        https://www.npmjs.com/package/react-redux
+    ```
+* React Router Dom: 
+    ```https
+        https://www.npmjs.com/package/react-router-dom
     ```
 
 ## Available Scripts

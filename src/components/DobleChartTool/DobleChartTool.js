@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from 'react'
-import styles from './Charts.module.css'
+import styles from './DobleChartTool.module.css'
 import Chart from 'chart.js'
 
-const Charts = ({ stats, bases, name, color }) => {
+const DobleChartTool = ({ stats, bases, name, color, bases2, name2, color2 }) => {
   const chartRef = useRef()
 
   useEffect(() => {
@@ -33,6 +33,27 @@ const Charts = ({ stats, bases, name, color }) => {
             ],
             borderWidth: 1
           },
+          {
+            label: String(name2).toUpperCase(),
+            data: bases2,
+            backgroundColor: [
+              color2,
+              color2,
+              color2,
+              color2,
+              color2,
+              color2,
+            ],
+            borderColor: [
+              color2,
+              color2,
+              color2,
+              color2,
+              color2,
+              color2,
+            ],
+            borderWidth: 1
+          }
         ]
       },
       options: {
@@ -59,4 +80,4 @@ const Charts = ({ stats, bases, name, color }) => {
 
 }
 
-export default Charts
+export default DobleChartTool

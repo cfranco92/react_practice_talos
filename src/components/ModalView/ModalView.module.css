@@ -1,0 +1,26 @@
+:root {
+  --subtitle-text-size: 1.25rem;
+  --weightColor: rgb(11, 0, 0);
+}
+
+.image {
+  width: 100%;
+}
+
+.name {
+  text-align: center;
+  font-size: var(--subtitle-text-size);
+  font-weight: var(--weightColor);
+}
+
+.subtitle {
+  font-size: var(--subtitle-text-size);
+}
+
+.modalButton {
+  margin-left: 10px;
+}
+
+.tableInformation {
+  text-align: center;
+}
