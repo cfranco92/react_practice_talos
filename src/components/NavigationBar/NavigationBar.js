@@ -37,14 +37,14 @@ const NavegationBar = ({ addSearch}) => {
             >
               Pokemons
             </Nav.Link>
-            <Nav.Link
+            {/* <Nav.Link
               as={NavLink}
               to='/items'
               activeClassName={styles.navActive}
               className={styles.linkColor}
             >
               Items
-            </Nav.Link>
+            </Nav.Link> */}
           </Nav>
           <Form inline>
             <FormControl
