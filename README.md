@@ -3,13 +3,9 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) by Cristian Franco Bedoya.
 
 Online application links:
-* Features: 
-    ```https
-        https://react-practice-582a5.web.app/
-    ```
 * Production: 
     ```https
-        TODO
+        https://react-practice-582a5.web.app/
     ```
 
 
