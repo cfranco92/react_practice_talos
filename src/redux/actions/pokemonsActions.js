@@ -8,6 +8,7 @@ export const TRIGEER_FETCH = 'TRIGEER_FETCH'
 export const ADD_SELECTED_POKEMON = 'ADD_SELECTED_POKEMON'
 export const CLEAN_SELECTED_POKEMON = 'CLEAN_SELECTED_POKEMON'
 export const SET_SHOW_TOAST = 'SET_SHOW_TOAST'
+export const ADD_SEARCH = 'ADD_SEARCH'
 
 
 export const fetchPokemons = (counter) => (dispatch) => {
@@ -92,3 +93,15 @@ export const setShowToast = (showToast) => (dispatch) => {
     }
   })
 }
+
+export const addSearch = (search, pokemonsArrayIn) => ({
+  type: ADD_SEARCH,
+  payload: {
+    search,
+    pokemonsArray: pokemonsArrayIn.filter(
+        (pokemon) => pokemon.name.toLowerCase().includes(
+          search.toLowerCase()
+        )
+      )
+  }
+})

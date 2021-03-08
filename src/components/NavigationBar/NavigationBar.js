@@ -3,14 +3,14 @@ import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import { Navbar, Nav, Form, FormControl } from 'react-bootstrap'
 import styles from './NavigationBar.module.css'
-import { addSearch } from '../../redux/actions/navBarActions'
+import { addSearch } from '../../redux/actions/pokemonsActions'
 import Toast from '../ToastComponent/ToastComponent'
 
-const NavegationBar = ({ addSearch}) => {
+const NavegationBar = ({ addSearch, originalPokemonsArray }) => {
   const input = useRef()
 
   const getInput = (inputEvent) => {
-    addSearch(inputEvent.target.value)
+    addSearch(inputEvent.target.value, originalPokemonsArray)
   }
 
   return (
@@ -64,13 +64,14 @@ const NavegationBar = ({ addSearch}) => {
 
 const mapStateToProps = (state) => {
   return {
-    navBar: state.navBar
+    // navBar: state.navBar
+    originalPokemonsArray : state.pokemons.originalPokemonsArray
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addSearch: (search) => dispatch(addSearch(search)),
+    addSearch: (search, originalPokemonsArray) => dispatch(addSearch(search, originalPokemonsArray)),
   }
 }
 

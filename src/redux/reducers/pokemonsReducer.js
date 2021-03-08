@@ -5,18 +5,21 @@ import {
   FETCH_POKEMONS_ERROR,
   ADD_SELECTED_POKEMON,
   CLEAN_SELECTED_POKEMON,
-  SET_SHOW_TOAST
+  SET_SHOW_TOAST,
+  ADD_SEARCH
 } from '../actions/pokemonsActions'
 
 const initialState = {
   pokemonsArray: [],
+  originalPokemonsArray: [],
   isFetching: false,
   error: null,
   nextQuery: null,
   previousQuery: null,
   queryCounter: 0,
   selectedPokemons: [],
-  showToast: false
+  showToast: false,
+  search: '',
 }
 
 function pokemons(state = initialState, action) {
@@ -35,6 +38,10 @@ function pokemons(state = initialState, action) {
         nextQuery: action.payload.pokemons.next,
         pokemonsArray: [
           ...state.pokemonsArray,
+          ...action.payload.pokemons.results,
+        ],
+        originalPokemonsArray: [
+          ...state.originalPokemonsArray,
           ...action.payload.pokemons.results,
         ],
       }
@@ -78,6 +85,15 @@ function pokemons(state = initialState, action) {
         ...state,
         showToast: !(state.showToast)
       }
+
+    case ADD_SEARCH:
+      return {
+        ...state,
+        search: action.payload.search,
+        isFetching: true,
+        pokemonsArray: action.payload.pokemonsArray
+      }
+
 
     default:
       return state

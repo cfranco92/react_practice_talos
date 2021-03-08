@@ -6,7 +6,7 @@ import PokemonCard from '../PokemonCard';
 import styles from './PokemonList.module.css'
 import ModalView from '../ModalView/ModalView';
 
-const PokemonList = ({ pokemonsQuery, fetchPokemons, triggerFetch, queryCounter }) => {
+const PokemonList = ({ pokemonsQuery, fetchPokemons, triggerFetch, queryCounter, search }) => {
   useEffect(() => {
     fetchPokemons(queryCounter)
   }, [fetchPokemons, queryCounter])
@@ -45,11 +45,13 @@ const mapStateToProps = (state) => {
   const { navBar } = state;
   return {
     queryCounter: state.pokemons.queryCounter,
-    pokemonsQuery: state.pokemons.pokemonsArray.filter(
-      (pokemon) => pokemon.name.toLowerCase().includes(
-        navBar.search.toLowerCase()
-      )
-    )
+    pokemonsQuery: state.pokemons.pokemonsArray,
+    search: state.pokemons.search,
+    // .filter(
+    //   (pokemon) => pokemon.name.toLowerCase().includes(
+    //     navBar.search.toLowerCase()
+    //   )
+    // )
   }
 }
 
