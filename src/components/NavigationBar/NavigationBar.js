@@ -64,14 +64,15 @@ const NavegationBar = ({ addSearch, originalPokemonsArray }) => {
 
 const mapStateToProps = (state) => {
   return {
-    // navBar: state.navBar
-    originalPokemonsArray : state.pokemons.originalPokemonsArray
+    originalPokemonsArray: state.pokemons.originalPokemonsArray
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addSearch: (search, originalPokemonsArray) => dispatch(addSearch(search, originalPokemonsArray)),
+    addSearch: (search, originalPokemonsArray) => dispatch(
+      addSearch(search, originalPokemonsArray)
+    ),
   }
 }
 
